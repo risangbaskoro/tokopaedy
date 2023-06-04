@@ -19,8 +19,8 @@ class ProductFactory extends Factory
             'name' => $name,
             'slug' => $slug,
             'description' => $this->faker->paragraphs(rand(1, 4), true),
-            'price' => $this->faker->randomNumber(),
-            'stock' => $this->faker->randomNumber(),
+            'price' => rand(10, 100) * 1000,
+            'stock' => rand(1, 100),
         ];
     }
 }
