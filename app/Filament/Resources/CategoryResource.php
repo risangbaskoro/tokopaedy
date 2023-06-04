@@ -27,20 +27,20 @@ class CategoryResource extends Resource
                 TextInput::make('name')
                     ->required()
                     ->reactive()
-                    ->afterStateUpdated(fn($state, callable $set) => $set('slug', Str::slug($state))),
+                    ->afterStateUpdated(fn ($state, callable $set) => $set('slug', Str::slug($state))),
 
                 TextInput::make('slug')
                     ->disabled()
                     ->required()
-                    ->unique(Category::class, 'slug', fn($record) => $record),
+                    ->unique(Category::class, 'slug', fn ($record) => $record),
 
                 Placeholder::make('created_at')
                     ->label('Created Date')
-                    ->content(fn(?Category $record): string => $record?->created_at?->diffForHumans() ?? '-'),
+                    ->content(fn (?Category $record): string => $record?->created_at?->diffForHumans() ?? '-'),
 
                 Placeholder::make('updated_at')
                     ->label('Last Modified Date')
-                    ->content(fn(?Category $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
+                    ->content(fn (?Category $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
             ]);
     }
 
