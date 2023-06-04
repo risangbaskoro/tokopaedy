@@ -14,6 +14,7 @@ class ProductFactory extends Factory
     {
         $name = $this->faker->words(rand(2, 4), true);
         $slug = Str::of($name, '-')->slug();
+
         return [
             'name' => $name,
             'slug' => $slug,
