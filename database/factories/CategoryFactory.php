@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 
 class CategoryFactory extends Factory
 {
@@ -12,10 +13,11 @@ class CategoryFactory extends Factory
 
     public function definition(): array
     {
+        $name = $this->faker->name();
+        $slug = Str::of($name, '-')->slug();
         return [
-            'name' => $this->faker->name(),
-            'slug' => $this->faker->slug(),
-
+            'name' => $name,
+            'slug' => $slug,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
